@@ -1,94 +1,78 @@
 # CSU Beamer
 
-中南大学风格的轻量 XeLaTeX Beamer 模板。项目以简洁的学术演示为目标，保留固定高度顶栏、章节导航、标题栏、页脚、衬线排版、三线表和定理环境，并使用中南大学校徽作为每页的淡色背景。
+中南大学风格的轻量 XeLaTeX Beamer 模板。项目面向学术汇报、组会、论文答辩和课程展示，保留固定高度顶栏、章节导航、标题栏、页脚、衬线排版、三线表和定理环境，并使用中南大学校徽作为每页的淡色背景。
 
-> This is an unofficial Central South University Beamer template. It is designed for academic presentations, group meetings, thesis defenses and course reports.
+> 这是一个非官方的中南大学 Beamer 模板。
 
-## Features
+## 模板特点
 
-- 16:9 widescreen layout, with an optional 4:3 switch.
-- Native Chinese typesetting through `ctex` and XeLaTeX.
-- Serif Latin text with XCharter and automatic CJK font fallback.
-- CSU blue visual theme (`RGB 25, 98, 153`).
-- The CSU emblem lockup on the title page and in the upper-right corner of titled frames.
-- A light CSU emblem background on every slide.
-- Consistent top navigation, footer page numbers, citations, blocks, theorem environments and booktabs tables.
-- BibTeX bibliography support and a small example presentation that can be edited directly.
+- 默认使用 16:9 画幅，也支持切换为 4:3。
+- 使用 `ctex` 和 XeLaTeX 支持中文排版。
+- 使用 XCharter 衬线英文字体，并提供中文字体回退配置。
+- 使用中南蓝作为主题色（`RGB 25, 98, 153`）。
+- 标题页和正文标题栏右上角显示中南大学中英文校徽组合图。
+- 每一页使用中南大学校徽淡色背景。
+- 提供顶部章节导航、页脚页码、引用、块环境、定理环境和三线表样式。
+- 支持 BibTeX，并附带一个可以直接修改的示例演示文稿。
 
-## Preview
+## 示例预览
 
-The included [main.pdf](main.pdf) is a compiled preview of the example deck. Replace the title, author, institute and date in `main.tex` to start your own presentation.
+项目中的 [main.pdf](main.pdf) 是示例演示文稿的编译结果。修改 `main.tex` 中的标题、作者、单位和日期，即可开始制作自己的幻灯片。项目使用 XeLaTeX 编译，推荐使用 `latexmk -xelatex main.tex` 完成多轮编译和参考文献处理。
 
-## Requirements
-
-Install a TeX distribution with the following components:
-
-- XeLaTeX
-- `latexmk`
-- `ctex`
-- Beamer, PGF/TikZ, XCharter and the other standard packages used by `main.tex`
-
-TeX Live is recommended. The template is intended to be compiled with XeLaTeX because it contains Chinese text and CJK font configuration.
-
-## Quick Start
-
-```bash
-latexmk -xelatex main.tex
-```
-
-Open `main.pdf` after compilation. You can also compile directly with `xelatex`, but `latexmk` automatically runs the required bibliography and cross-reference passes.
-
-To switch to a 4:3 canvas, change `aspectratio=169` to `aspectratio=43` in the document class declaration in `main.tex`.
-
-## Project Structure
+## 项目结构
 
 ```text
 .
-├── CSU.sty              # CSU theme definitions
-├── main.tex             # Example presentation and entry point
-├── main.pdf             # Compiled example PDF
-├── ref.bib              # BibTeX example database
+├── CSU.sty              # CSU 主题样式
+├── main.tex             # 示例演示文稿和编译入口
+├── main.pdf             # 示例 PDF
+├── ref.bib              # BibTeX 示例数据库
 ├── figures/
-│   ├── background.png   # Light CSU emblem slide background
-│   ├── logo.png         # CSU Chinese-English logo lockup
-│   └── fig1.png         # Example figure
-├── clean.sh             # Cleanup script
+│   ├── background.png   # 校徽淡色背景
+│   ├── logo.png         # 中南大学中英文校徽组合图
+│   └── fig1.png         # 示例图片
+├── clean.sh             # 清理脚本
 ├── LICENSE
 └── README.md
 ```
 
-## Customization
+## 自定义方法
 
-Edit these commands in `main.tex`:
+在 `main.tex` 中修改以下信息：
 
 ```tex
-\title[Short title]{Presentation title}
-\subtitle{Optional subtitle}
-\author[Short author]{Author name}
-\institute{School or department, Central South University}
+\title[短标题]{演示文稿标题}
+\subtitle{可选副标题}
+\author[简短作者名]{作者姓名}
+\institute{中南大学某学院或单位}
 \date{\today}
 ```
 
-Put presentation images in `figures/` and update the corresponding `\includegraphics` path. The theme uses `figures/logo.png` for the title page and titled frames, and `figures/background.png` as the full-slide background.
+将演示文稿图片放入 `figures/`，并同步修改 `\includegraphics` 路径。主题默认使用 `figures/logo.png` 作为标题页和正文标题栏校徽，使用 `figures/background.png` 作为整页背景。
 
-## Cleaning Build Files
+## 清理编译文件
 
 ```bash
-./clean.sh          # Remove intermediate files and keep main.pdf
-./clean.sh --deep   # Also remove main.pdf and main.bbl
+./clean.sh          # 清理中间文件，保留 main.pdf
+./clean.sh --deep   # 同时删除 main.pdf 和 main.bbl
 ```
 
-On Windows, run the script from Git Bash or use the equivalent `latexmk -c main` command.
+Windows 用户可以在 Git Bash 中运行脚本，也可以使用等价命令 `latexmk -c main`。
 
-## Credits and References
+## 致谢与参考项目
 
-The layout and implementation were adapted with reference to:
+本项目的版式和实现参考了以下项目：
 
-- [HexaMPA/CSU_Beamer](https://github.com/HexaMPA/CSU_Beamer), an earlier Central South University Beamer template.
-- [rexera/minimalist-pku-beamer-2026](https://github.com/rexera/minimalist-pku-beamer-2026), the minimalist Beamer layout whose typography and page structure inspired this project.
+- [HexaMPA/CSU_Beamer](https://github.com/HexaMPA/CSU_Beamer)：早期的中南大学 Beamer 模板。
+- [rexera/minimalist-pku-beamer-2026](https://github.com/rexera/minimalist-pku-beamer-2026)：本项目版式、字体和页面结构的重要参考来源。
 
-This repository is an independent CSU adaptation. It does not represent an official release by Central South University.
+本仓库是在上述项目基础上的独立中南大学适配版本，不代表中南大学官方发布。
 
-## License and Branding
+## 协作者
 
-The theme source code is released under the [MIT License](LICENSE). The Central South University emblem and wordmark are university trademarks and remain subject to the university's applicable usage requirements. Please replace the example author and contact information before publishing your own slides.
+- [Reverie365](https://github.com/Reverie365)：项目维护者。
+- [OpenAI Codex](https://openai.com/codex/)：协助完成模板适配、资源整理、文档编写和编译验证。
+
+## 许可证与校徽使用
+
+主题源代码使用 [MIT License](LICENSE) 发布。中南大学校徽和校名图形属于中南大学视觉资产，使用时请遵守学校的相关规范。发布自己的幻灯片前，请替换示例中的作者、邮箱和单位信息。
